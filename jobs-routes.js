@@ -20,7 +20,8 @@ router.post('/job', (req, res) => {
     const sql = 'INSERT INTO Jobs (job_title, company, job_posting, date_applied, notes) VALUES (?, ?, ?, ?, ?)';
     db.query(sql, [job_title, company, job_posting, date_applied, notes], (err, result) => {
         if (err) throw err;
-        res.status(201).send('Job added');
+        console.log(res);
+        res.status(201).send(result);
     });
 });
 
