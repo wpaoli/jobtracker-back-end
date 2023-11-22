@@ -25,5 +25,15 @@ router.post('/job', (req, res) => {
     });
 });
 
+router.delete('/job/:jobId', (req, res) => {
+    const jobId = req.params.jobId;
+    const sql = 'DELETE FROM Jobs WHERE job_id = ?';
+    db.query(sql, jobId, (err, result) => {
+        if (err) throw err;
+        console.log(result);
+        res.status(200).send(result);
+    });
+ });
+
 module.exports = router
 
