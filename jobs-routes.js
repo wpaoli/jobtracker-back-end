@@ -39,11 +39,8 @@ router.delete('/job/:jobId', (req, res) => {
 
  router.put('/job/:jobId', (req, res) => {
     const jobId = req.params.jobId;
+    //Need some error handling here if jobId is undefined
     const { job_title, company, job_posting, date_applied, notes } = req.body;
-    console.log(jobId, req.body)
-    // console.log(res);
-    // res.send(req.body)
-
     const sql = 'UPDATE Jobs SET job_title = ?, company = ?, job_posting = ?, date_applied = ?, notes = ? WHERE job_id = ?;'
 
     db.query(sql, [job_title, company, job_posting, date_applied, notes, jobId], (err, result) => {
